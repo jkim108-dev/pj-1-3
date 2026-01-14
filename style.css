@@ -14,24 +14,109 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  cursor: url("images/porsche-logo.png"), auto;
 }
 
 .header {
   top: 0;
   width: 100%;
+  z-index: 20;
   padding: 24px 40px;
-  z-index: 10;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.6) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
+.porsche-wordmark {
+  width: 250px;
+  height: auto;
+  align-items: center;
+}
 
+#menu-toggle {
+  display: none;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 70vw;
+  height: 100vh;
+
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 45%,
+    rgba(255, 255, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0.4) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+
+  z-index: 90;
+  font-weight: 600; 
+}
+
+.menu-button {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  color: #000000; 
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  padding: 120px 40px;
+
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+
+.menu-content a {
+  font-size: 24px;
+  color: #111;
+  text-decoration: none;
+}
+
+#menu-toggle:checked ~ .side-menu {
+  transform: translateX(0);
+}
+
+.menu-text {
+  font-size: 18px;
+  font-weight: 700;
+}
 .logo {
   color: #d5001c; 
-  font-size: 70px;
+  font-size: 50px;
   font-weight: 600;
   letter-spacing: 4px;
   font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  -webkit-text-stroke: 1px black;
+  display: flex;
+  margin-top: -10px;
+  
 }
 
 .hero {
@@ -64,6 +149,7 @@ html, body {
 
 .model-item {
   margin-bottom: 20px;
+
 }
 
 .model-name {
@@ -84,6 +170,11 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  
+  filter: grayscale(100%);
+  transition: 
+    filter 0.4s ease,
+    transform 0.4s ease;
 }
 
 .content {
@@ -105,9 +196,19 @@ html, body {
 }
 
 .next-section {
-  min-height: 100vh;
-  background-color: white;
-  background-image: url("images/porsche-center.webp");
+  min-height: 120vh;
+  margin-top: -5px;
+  padding-top: 130px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.85) 25%,
+      rgba(255,255,255,0.4) 55%,
+      rgba(255,255,255,0) 100%
+    ),
+    url("images/porsche-center.webp");
+
   background-size: cover;
   background-position: center;
 }
@@ -131,7 +232,7 @@ html, body {
   justify-content: center;
   gap: 16px;
 
-  padding: 40px 0;
+  padding: 50px 0;
 }
 
 
@@ -175,3 +276,8 @@ html, body {
   height:80vh; 
 }
 
+.model-item a:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+
+}
